@@ -9,7 +9,7 @@ const FavoriteContacts = (props) => {
       <div className="text-center text-white-50">Favorites</div>
       <div className="p-2">
         {props.contacts.map((contactObj, index) => (
-          <Contact contact={contactObj} key={index}></Contact>
+          <Contact contact={contactObj} key={index} favoriteClick={props.favoriteClick}></Contact>
         ))}
       </div>
     </div>

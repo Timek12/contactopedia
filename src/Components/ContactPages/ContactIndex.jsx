@@ -68,6 +68,19 @@ class ContactIndex extends React.Component {
     return { status: "success", msg: "Contact has been added successfully" };
   };
 
+  handleToggleFavorites = (contact) => {
+    this.setState((previousState) => {
+      return{
+        contactList: previousState.contactList.map((obj) => {
+          if(obj.id == contact.id) {
+            return {...obj, isFavorite: !obj.isFavorite};
+          }
+          return obj;
+        })
+      }
+    })
+  };
+
   render() {
     return (
       <div>
@@ -91,6 +104,7 @@ class ContactIndex extends React.Component {
                   contacts={this.state.contactList.filter(
                     (u) => u.isFavorite == true
                   )}
+                  favoriteClick={this.handleToggleFavorites}
                 />
               </div>
             </div>
@@ -100,6 +114,7 @@ class ContactIndex extends React.Component {
                   contacts={this.state.contactList.filter(
                     (u) => u.isFavorite == false
                   )}
+                  favoriteClick={this.handleToggleFavorites}
                 />
               </div>
             </div>
