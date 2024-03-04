@@ -7,7 +7,7 @@ const Contact = (props) => {
       <div className="col-2 col-md-1 pt-2 pt-md-1">
         <img
           src={`https://ui-avatars.com/api/?name=${props.contact.name}`}
-          style={{ width: "80%" }}
+          style={{ width: "100%" }}
           alt=""
         ></img>
       </div>
