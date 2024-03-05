@@ -55,9 +55,10 @@ class ContactIndex extends React.Component {
       return { status: "failure", msg: "Duplicate Record" };
     }
 
+
     const newFinalContact = {
       ...newContact,
-      id: this.state.contactList[this.state.contactList.length - 1].id + 1,
+      id: this.state.contactList.length > 0 ? this.state.contactList[this.state.contactList.length - 1].id + 1 : 0,
       isFavorite: false,
     };
     this.setState((previousState) => {
@@ -70,15 +71,27 @@ class ContactIndex extends React.Component {
 
   handleToggleFavorites = (contact) => {
     this.setState((previousState) => {
-      return{
+      return {
         contactList: previousState.contactList.map((obj) => {
-          if(obj.id == contact.id) {
-            return {...obj, isFavorite: !obj.isFavorite};
+          if (obj.id == contact.id) {
+            return { ...obj, isFavorite: !obj.isFavorite };
           }
           return obj;
-        })
-      }
-    })
+        }),
+      };
+    });
+  };
+
+  handleToggleDeleteContact = (contact) => {
+    this.setState((previousState) => {
+      return {
+        contactList: previousState.contactList.filter((u) => {
+          if (u.id != contact.id) {
+            return true;
+          }
+        }),
+      };
+    });
   };
 
   render() {
@@ -105,6 +118,7 @@ class ContactIndex extends React.Component {
                     (u) => u.isFavorite == true
                   )}
                   favoriteClick={this.handleToggleFavorites}
+                  deleteClick={this.handleToggleDeleteContact}
                 />
               </div>
             </div>
@@ -115,6 +129,7 @@ class ContactIndex extends React.Component {
                     (u) => u.isFavorite == false
                   )}
                   favoriteClick={this.handleToggleFavorites}
+                  deleteClick={this.handleToggleDeleteContact}
                 />
               </div>
             </div>
