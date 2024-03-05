@@ -100,10 +100,10 @@ class ContactIndex extends React.Component {
         <Header />
         <div className="container" style={{ minHeight: "85vh" }}>
           <div className="row py-3">
-            <div className="col-4 offset-2">
+            <div className="col-4 offset-2 row">
               <AddRandomContact />
             </div>
-            <div className="col-4">
+            <div className="col-4 row">
               <RemoveAllContact />
             </div>
             <div className="row py-2">
