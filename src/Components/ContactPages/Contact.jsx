@@ -25,7 +25,7 @@ const Contact = (props) => {
           className={`btn btn-sm m-1 ${
             props.contact.isFavorite ? "btn-warning" : "btn-outline-warning"
           }`}
-          onClick={() => props.favoriteClick(props.contact)}
+          onClick={() => props.favoriteClick(props.contact.id)}
         >
           <i className="bi bi-star" style={{ fontSize: "1rem" }}></i>
         </button>
@@ -36,7 +36,7 @@ const Contact = (props) => {
         </button>
         <button
           className="btn btn-danger btn-sm m-1"
-          onClick={() => props.deleteClick(props.contact)}
+          onClick={() => props.deleteClick(props.contact.id)}
         >
           <i className="bi bi-trash-fill" style={{ fontSize: "1rem" }}></i>
         </button>

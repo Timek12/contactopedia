@@ -82,11 +82,11 @@ class ContactIndex extends React.Component {
     });
   };
 
-  handleToggleDeleteContact = (contact) => {
+  handleToggleDeleteContact = (contactId) => {
     this.setState((previousState) => {
       return {
         contactList: previousState.contactList.filter((u) => {
-          if (u.id != contact.id) {
+          if (u.id != contactId) {
             return true;
           }
         }),
